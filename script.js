@@ -8,8 +8,7 @@ let operators = {
 function operate(a,b,c) {    
     let result = operators[c](a, b);
     let arr = ('' + result).split('');
-    arr.splice(11, arr.length);
-    console.log(num1 + operator + num2);
+    arr.splice(11, arr.length);    
     return arr.join('');
 };
 
@@ -18,8 +17,7 @@ const ops = document.querySelectorAll('.op');
 ops.forEach((btn) => {
     btn.addEventListener('click', () => {
         if (operator.length === 0) {
-            operator.push(btn.textContent);
-            console.log(num1 + operator + num2);
+            operator.push(btn.textContent);            
             display.textContent = `${(num1.concat(operator[0]).join(''))}`;
         } else if (operator.length !==0 && evaluated.length !==0) {
         //----required if we perform more operations after clicking "="----// 
@@ -27,8 +25,7 @@ ops.forEach((btn) => {
             num2.splice(0, num2.length);
             operator.splice(0, 1);
             num1.push(`${evaluated}`);
-            operator.push(btn.textContent);
-            console.log(num1 + operator + num2);
+            operator.push(btn.textContent);            
             display.textContent = `${(num1.concat(operator[0]).join(''))}`;
         //-----------------------------------------------------------------//
         } else {
@@ -38,15 +35,13 @@ ops.forEach((btn) => {
             if (c === '/' && b === 0) {
                 display.textContent = 'IQ 60 move! Congrats!';
             } else {
-            operate(a,b,c);
-            console.log(num1 + operator + num2);
+            operate(a,b,c);            
             display.textContent = `${(operate(a,b,c))}`;
             num1.splice(0, num1.length);
             num2.splice(0, num2.length);
             operator.splice(0, 1);
             num1.push(display.textContent);
-            operator.push(btn.textContent);
-            console.log(num1 + operator + num2);
+            operator.push(btn.textContent);            
             display.textContent = `${(num1.concat(operator[0]).join(''))}`;
             };
         };
@@ -63,15 +58,13 @@ digits.forEach((btn) => {
         if (operator.length === 0 && num1.includes('.') && btn.textContent === '.') {
             num1.push('');
         } else if (operator.length === 0) {
-            num1.push(btn.textContent);
-            console.log(num1 + operator + num2);
+            num1.push(btn.textContent);            
             display.textContent = `${(num1.join(''))}`;
         } else {
             if (operator.length !== 0 && num2.includes('.') && btn.textContent === '.') {
                 num2.push('');
             } else if (operator.length !== 0) {
-            num2.push(btn.textContent);
-            console.log(num1 + operator + num2);
+            num2.push(btn.textContent);            
             display.textContent = `${(num1.concat(operator[0], num2).join(''))}`;
             };
         };
@@ -97,16 +90,13 @@ clear.addEventListener('click', () => {
 let backspace = document.querySelector ('.bs');
 backspace.addEventListener('click', () => {
     if (operator.length === 0) {
-        num1.splice(num1.length-1, 1);
-        console.log(num1 + operator + num2);
+        num1.splice(num1.length-1, 1);        
         display.textContent = `${(num1.join(''))}`;
     } else if (operator.length !== 0 && num2.length === 0) {
-        operator.splice(0, 1);
-        console.log(num1 + operator + num2);
+        operator.splice(0, 1);        
         display.textContent = `${(num1.join(''))}`;
     } else if (operator.length !== 0 && num2.length !== 0) {
-        num2.splice(num2.length-1, 1);
-        console.log(num1 + operator + num2);
+        num2.splice(num2.length-1, 1);        
         display.textContent = `${(num1.concat(operator[0], num2).join(''))}`;
     };
 });
@@ -123,8 +113,7 @@ equals.addEventListener('click', () => {
         display.textContent = 'IQ 60 move! Congrats!';
     } else if (num2.length !==0) {
         operate(a,b,c);
-        evaluated.splice(0, evaluated.length);
-        console.log(num1 + operator + num2);
+        evaluated.splice(0, evaluated.length);        
         display.textContent = `${(operate(a,b,c))}`;
     };
 });
